@@ -1,4 +1,15 @@
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #fefefe;
+}
 #gameBoard {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column-reverse;
+    padding: 100px;
     position: relative;
 }
 
@@ -10,16 +21,12 @@ td {
     vertical-align: middle;
     font-family: "Comic Sans MS", cursive;
     font-size: 70px;
+    color: crimson;
     cursor: pointer;
 }
 
 table {
     border-collapse: collapse;
-    position: absolute;
-    left: 50%;
-    z-index: 2;
-    top: 50%;
-    transform: translate(-50%, 50%);
 }
 
 table tr:first-child td {
@@ -37,15 +44,35 @@ table tr td:last-child {
 
 .endgame {
     display: none;
-    width: 200px;
-    top: 120px;
-    background: rgba(205, 133, 63, 0.8);
+    width: 350px;
+    height: 350px;
+    top: 0;
+    background: rgba(0, 0, 0, 0.5);
     position: absolute;
     left: 50%;
-    margin-left: -100px;
-    padding: 50px 0;
-    text-align: center;
+    transform: translate(-50%, 50%);
+    align-items: center;
+    justify-content: center;
     border-radius: 5px;
     color: #fff;
     font-size: 2em;
+}
+.endgame .text {
+    text-transform: uppercase;
+}
+.restart-btn {
+    margin-bottom: 50px;
+    background: crimson;
+    color: #fff;
+    padding: 10px 50px;
+    border: 1px solid crimson;
+    cursor: pointer;
+    transition: 0.3s;
+    font-size: 1rem;
+    text-transform: uppercase;
+    outline: none;
+}
+.restart-btn:hover {
+    background: #fff;
+    color: crimson;
 }

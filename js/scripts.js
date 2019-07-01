@@ -31,7 +31,7 @@
     }
 
     function turnClick(square) {
-        if(typeof origBoard[square.target.id] == 'number') {
+        if(typeof origBoard[square.target.id] === 'number') {
             turn(square.target.id, humanPlayer);
             if (!checkTie()) turn(bestSpot(), computerPlayer)
         }
@@ -45,7 +45,7 @@
     function checkTie() {
         if(emptySquares().length === 0) {
             for ( let i = 0; i < cells.length; i++) {
-                cells[i].style.backgroundColor = 'green';
+                cells[i].style.backgroundColor = 'gray';
                 cells[i].removeEventListener('click', turnClick, false);
             }
             declareWinner('Tie Game');
@@ -54,7 +54,7 @@
         return false;
     }
     function declareWinner(who) {
-        document.querySelector('.endgame').style.display = 'block';
+        document.querySelector('.endgame').style.display = 'flex';
         document.querySelector('.endgame .text').innerText = who;
     }
     function turn(squareId, player) {
@@ -123,9 +123,9 @@
 
     function gameOver(gameWon) {
         for (let index of winCombos[gameWon.index]) {
-            document.getElementById(index).style.backgroundColor = gameWon.player == humanPlayer ? 'blue' : 'red';
+            document.getElementById(index).style.backgroundColor = gameWon.player === humanPlayer ? 'blue' : 'red';
         }
-        for (var i = 0; i < cells.length; i++) {
+        for (let i = 0; i < cells.length; i++) {
             cells[i].removeEventListener('click', turnClick, false);
         }
         declareWinner(gameWon.player === humanPlayer ? 'You Win' : 'You Lose');
